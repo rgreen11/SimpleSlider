@@ -1,25 +1,65 @@
-import React from 'react';
-import logo from './logo.svg';
+import React , {useState}from 'react';
+import 'animate.css'
 import './App.css';
 
+
+function handleSlider(isOpen, setOpen){
+  if(isOpen === true){
+    setOpen(isOpen = false)
+  } else{
+    setOpen(isOpen = true)
+  }
+}
+
+
 function App() {
+let slider = false;
+let [isOpen, setOpen] = useState(slider)
+  console.log(isOpen)
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <div className={isOpen ?  "shadow": "noshadow" }></div>
+
+    <div className="container">
+      <div className= "red"></div>
+
+      <div className= "green"></div>
+
+      <p className="rightarrow" onClick={()=>{handleSlider(isOpen, setOpen)}}><i></i></p> 
+      
+      <div className= "blue"></div>
+
+      <div className= "purple"></div>
     </div>
+    <div className={`slider ${+ isOpen ? "fade-inShow": "fade-in"}`} >
+          <div>
+            <select className={`select option1`}>
+            <option>Let</option>
+            <option>Begin</option>
+            <option>This</option>
+            </select>
+          </div>
+
+          <div>
+            <select className='select option2'>
+            <option>More</option>
+            <option>Begin</option>
+            <option>This</option>
+            </select>
+          </div>
+
+          <div>
+            <select className='select option3'>
+            <option>Lets</option>
+            <option>Begin</option>
+            <option>This</option>
+            </select>
+          </div>
+      </div>
+    </>
   );
 }
 
